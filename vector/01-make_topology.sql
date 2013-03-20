@@ -1,4 +1,4 @@
-create table nodes ( nodeid int not null primary key, x int not null, y int not null, z int not null, edgefid);
+create table nodes ( nodeid int not null primary key, x float not null, y float not null, z float, edgefid int);
 create index idx_nodes on nodes (nodeid, x,y);
 
 create table edges ( edgeid int not null primary key, start_node_id int not null, end_node_id int not null, edgefid int);
