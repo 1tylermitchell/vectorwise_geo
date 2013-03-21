@@ -1,0 +1,8 @@
+<OGRVRTDataSource>
+<OGRVRTLayer name="v_edges" LayerSRS="EPSG:4326">
+<SrcDataSource>@driver=ingres,dbname=vw_geo</SrcDataSource>
+<SrcSQL>select edgeid,wkt from v_edges</SrcSQL>
+<GeometryType>wkbLineString</GeometryType>
+<GeometryField encoding="WKT" field="wkt" />
+</OGRVRTLayer>
+</OGRVRTDataSource>

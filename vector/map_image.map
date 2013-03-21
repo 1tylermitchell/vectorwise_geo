@@ -1,0 +1,93 @@
+MAP
+ SIZE 400 400
+ EXTENT  -10 -10 20 20
+ #EXTENT -180 -90 180 90
+ IMAGECOLOR 255 255 255
+
+ SYMBOLSET /var/www/map/symbols/symbols.txt
+ FONTSET /var/www/map/fonts/fonts.txt
+ IMAGETYPE PNG8
+
+ CONFIG "PROJ_LIB" "/usr/local/share/proj/"
+ CONFIG "PATH" "/usr/bin/:$PATH"
+
+ #UNITS DD 
+ #PROJECTION
+ # "init=epsg:4326"
+ #END
+ 
+ WEB
+  TEMPLATE "/var/www/html/template.html"
+  IMAGEPATH "/var/www/html/tmp/"
+  IMAGEURL "/tmp/"
+ END
+
+LAYER
+  NAME edges
+  METADATA
+        "DESCRIPTION" "Edges"
+  END
+  TYPE LINE
+  STATUS DEFAULT
+  CONNECTIONTYPE OGR
+  CONNECTION edges.vrt
+  #DATA "wkt from (select * from v_edges) as foo using SRID=4326)" #v_edges
+  DATA v_edges
+  LABELITEM 'edgeid'
+  CLASS
+    NAME "Edges"
+    SYMBOL 'circle'
+    SIZE 2
+    COLOR 220 0 0
+    LABEL
+      FONT 'sans'
+      COLOR  150 150 150
+      OUTLINECOLOR 255 255 255
+      TYPE truetype
+      SIZE 15
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END # Layer
+
+LAYER
+  NAME nodes
+  METADATA
+	"DESCRIPTION" "Nodes"
+  END
+  TYPE POINT
+  STATUS DEFAULT
+  CONNECTIONTYPE OGR
+  CONNECTION nodes.vrt
+  DATA v_nodes
+  LABELITEM 'nodeid'
+  CLASS
+    NAME "Nodes"
+    SYMBOL 'circle'
+    SIZE 10
+    COLOR 220 0 0
+    OUTLINECOLOR 0 0 0 
+    LABEL
+      FONT 'sans'
+      COLOR  150 150 150
+      OUTLINECOLOR 255 255 255
+      TYPE truetype
+      SIZE 15
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END # Layer
+
+SYMBOL
+    name "circle"
+    Type ELLIPSE 
+    Filled true 
+    POINTS
+        1 1 
+    END 
+END
+
+END
+

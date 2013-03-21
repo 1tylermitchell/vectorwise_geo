@@ -1,0 +1,8 @@
+<OGRVRTDataSource>
+<OGRVRTLayer name="v_nodes">
+<SrcDataSource>@driver=ingres,dbname=vw_geo</SrcDataSource>
+<SrcSQL>select nodeid, wkt from v_nodes</SrcSQL>
+<GeometryType>wkbPoint</GeometryType>
+<GeometryField encoding="WKT" field="wkt" />
+</OGRVRTLayer>
+</OGRVRTDataSource>
